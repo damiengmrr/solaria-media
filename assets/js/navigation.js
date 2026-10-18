@@ -3,6 +3,9 @@
  const names=['index','agence','expertises','realisations','contact'];
  const pageTitles={index:'Solaria Media | Accueil',agence:'Solaria Media | L’agence',expertises:'Solaria Media | Expertises',realisations:'Solaria Media | Réalisations',contact:'Solaria Media | Contact'};
  const views=document.querySelectorAll('[data-view]');
+ function pageFromPath(){
+  return location.pathname.match(/\/(index|agence|expertises|realisations|contact)(?:\.html)?\/?$/)?.[1]||'index';
+ }
  function show(name,anchor='',project='',updateHistory=true){
   if(!names.includes(name))name='index';
   const swapView=()=>{views.forEach(v=>v.hidden=v.dataset.view!==name)};
@@ -33,12 +36,11 @@
  });
  window.addEventListener('popstate',()=>{
   const m=/^#\/(index|agence|expertises|realisations|contact)(?:\/(.+))?$/.exec(location.hash);
-  show(m?.[1]||'index',decodeURIComponent(m?.[2]||''),'',false);
+  show(m?.[1]||pageFromPath(),decodeURIComponent(m?.[2]||''),'',false);
  });
  const m=/^#\/(index|agence|expertises|realisations|contact)(?:\/(.+))?$/.exec(location.hash);
  if(m)show(m[1],decodeURIComponent(m[2]||''),'',false);
  else{
-  const path=location.pathname.match(/\/(index|agence|expertises|realisations|contact)\.html$/);
-  if(path&&path[1]!=='index')show(path[1],'','',false);
+  show(pageFromPath(),'',new URLSearchParams(location.search).get('projet')||'',false);
  }
 })();
