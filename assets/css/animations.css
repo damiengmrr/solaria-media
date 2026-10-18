@@ -1,0 +1,23 @@
+/* Animation layer — no changes to layout, colors, typography, sizes, images or content. */
+@media (prefers-reduced-motion: no-preference) {
+  .solaria-motion-ready .solaria-motion-target {
+    transition: opacity .72s cubic-bezier(.2,.7,.2,1), transform .72s cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--solaria-delay, 0ms);
+  }
+  .solaria-motion-ready .solaria-motion-target:not(.solaria-motion-seen) {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  .solaria-motion-ready .solaria-motion-target:focus-within {
+    opacity: 1;
+    transform: none;
+  }
+  .button:active, .nav-action:active {transform: scale(.985);}
+  ::view-transition-old(root) {animation: solaria-page-out 170ms ease-in both;}
+  ::view-transition-new(root) {animation: solaria-page-in 370ms cubic-bezier(.2,.7,.2,1) both;}
+  @keyframes solaria-page-out {to {opacity: 0;}}
+  @keyframes solaria-page-in {from {opacity: 0;transform: translateY(9px);}to {opacity: 1;transform: none;}}
+}
+@media (prefers-reduced-motion: reduce) {
+  .solaria-motion-ready .solaria-motion-target {transition: none!important;opacity:1!important;transform:none!important;}
+}
