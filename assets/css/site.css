@@ -45,3 +45,6 @@
 .process-method .process-symbol{color:var(--flame)}
 .process-method .process-grid p{color:var(--muted)}
 @media(max-width:740px){.process-method .process-heading{flex-direction:column;align-items:flex-start;gap:20px}.process-method .process-heading>p{font-size:14px}}
+
+.gallery-controls:not([hidden]){display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:18px}
+.gallery-controls button{border:1px solid #6e625c;border-radius:6px;padding:10px 15px;background:var(--ink);color:white}

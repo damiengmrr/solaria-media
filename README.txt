@@ -29,3 +29,17 @@ FICHIERS :
 INSTALLATION : décompresser puis déposer les fichiers à la racine Netlify.
 ATTENTION : Le formulaire de la maquette V5 conserve son comportement initial
 (démonstration sans véritable envoi). Aucun changement fonctionnel non demandé.
+
+DIAPORAMAS RÉALISATIONS (PRÉPARÉS, NON ACTIVÉS) :
+ assets/js/realisations-gallery.js contient un objet galleries vide.
+ Après réception et validation des images, ajouter une entrée par carte :
+ clé = chemin data-image de la carte ; valeur = tableau de {src, alt}.
+ Au moins deux images sont nécessaires. Exemple de structure uniquement :
+ galleries = { 'chemin-de-la-carte': [
+   {src: 'chemin-image-1', alt: 'Description de la première image'},
+   {src: 'chemin-image-2', alt: 'Description de la deuxième image'}
+ ] }.
+ Les chemins de cet exemple ne sont pas des fichiers existants.
+ Une galerie renseignée propose swipe, flèches, clavier et lecture à 5 secondes.
+ Pause disponible ; pas de démarrage automatique si animations réduites.
+ Sans configuration, l’agrandissement existant reste inchangé.
