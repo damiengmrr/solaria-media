@@ -1,0 +1,12 @@
+# Solaria Media — déploiement Netlify (site statique, aucune compilation)
+[build]
+  publish = "."
+
+# En-têtes sans effet sur le rendu. La politique de cache par défaut de
+# Netlify (revalidation à chaque visite, ETag) est conservée : un visuel
+# remplacé sous le même nom est servi à jour immédiatement.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
